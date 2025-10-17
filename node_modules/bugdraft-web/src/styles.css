@@ -1,0 +1,188 @@
+/* CSS variables for theme */
+:root {
+  --bg: #0b1020;
+  --panel: #121831;
+  --panel-alt: #0e1430;
+  --text: #e6e9f2;
+  --muted: #aab0c0;
+  --primary: #6ea8fe;
+  --primary-600: #5a96f7;
+  --primary-700: #3c7cf0;
+  --danger-bg: #2a0f15;
+  --danger-text: #ffb3bd;
+  --success-bg: #10251b;
+  --success-text: #a8e6c0;
+  --border: #233056;
+  --input-bg: #0e1430;
+  --input-border: #22305a;
+  --shadow: 0 6px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 80% -20%, #1d2547 0%, transparent 55%),
+              radial-gradient(1000px 700px at -20% 20%, #1a1f3d 0%, transparent 55%),
+              var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary) 0%, #8bd7ff 100%);
+  box-shadow: var(--shadow);
+}
+
+.brand-title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12)), var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 920px) {
+  .two-col {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+}
+
+.section {
+  padding: 18px 18px 16px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 8px 2px;
+}
+
+.control {
+  display: grid;
+  gap: 8px;
+}
+
+.row {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 700px) {
+  .row-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+textarea { resize: vertical; min-height: 120px; }
+
+input::placeholder, textarea::placeholder { color: #6c7899; }
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(110,168,254,0.15);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--input-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.2)), var(--panel-alt);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .06s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); border-color: var(--primary); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-700) 100%);
+  border-color: transparent;
+  color: #0b1020;
+  font-weight: 600;
+}
+
+.alert {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.alert-error { background: var(--danger-bg); color: var(--danger-text); }
+.alert-success { background: var(--success-bg); color: var(--success-text); }
+
+.preview textarea { min-height: 200px; white-space: pre-wrap; }
+
+.result pre {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.muted { color: var(--muted); font-size: 13px; }
+
+/* Ensure links in success results are readable on dark/blue backgrounds */
+.alert-success a,
+.result a {
+  color: var(--text);
+  text-decoration: underline;
+}
+.alert-success a:hover,
+.result a:hover {
+  color: #ffffff;
+}
+
+
